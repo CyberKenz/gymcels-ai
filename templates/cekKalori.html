@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
+    <title>Menu Cek Kalori</title>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen overflow-hidden relative">
+    <div class="fixed inset-0 opacity-5 pointer-events-none">
+        <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px);"></div>
+    </div>
+
+    <div class="fixed inset-0 flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+        <main class="w-full max-w-2xl my-auto">
+            <section class="bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-2xl shadow-cyan-300/20 ring-1 ring-cyan-300/30 overflow-hidden">
+                <div class="p-8 md:p-10">
+                    <header class="flex items-start gap-4 mb-6">
+                        <div class="p-3 bg-linear-to-br from-rose-500 via-indigo-500 to-cyan-300 rounded-xl text-gray-900 shadow-lg shadow-cyan-300/30">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold tracking-tight text-cyan-300 drop-shadow-[0_0_15px_rgba(103,232,249,0.5)]">Hitung Kalori Harian</h1>
+                            <p class="mt-1 text-sm text-gray-400">Isi data demi estimasi kebutuhan kalorimu — jelas, bersih, dan cepat.</p>
+                        </div>
+                    </header>
+
+                    <form id="kaloriForm" method="POST" action="/cekKalori" class="mt-6 grid gap-4"
+                        onsubmit="return validateForm()">
+                        <!-- Gender -->
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-cyan-300 mb-2">Gender</label>
+                            <select id="gender" name="gender" required
+                                    class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm">
+                                <option value="" disabled selected>Pilih gender</option>
+                                <option value="pria">Laki-laki</option>
+                                <option value="wanita">Perempuan</option>
+                            </select>
+                            {% if errors.get('gender') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['gender'] }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Berat Badan -->
+                        <div>
+                            <label for="bb" class="block text-sm font-medium text-cyan-300 mb-2">Berat Badan (kg)</label>
+                            <input id="bb" name="bb" type="number" step="0.1" min="10" max="300" placeholder="Contoh: 68"
+                                class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                            {% if errors.get('bb') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['bb'] }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Tinggi Badan -->
+                        <div>
+                            <label for="tb" class="block text-sm font-medium text-cyan-300 mb-2">Tinggi Badan (cm)</label>
+                            <input id="tb" name="tb" type="number" step="1" min="50" max="260" placeholder="Contoh: 175"
+                                class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                            {% if errors.get('tb') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['tb'] }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Aktivitas -->
+                        <div>
+                            <label for="aktivitas" class="block text-sm font-medium text-cyan-300 mb-2">Tingkat Aktivitas (kali/minggu)</label>
+                            <input id="aktivitas" name="aktivitas" type="number" min="0" max="7" step="1" placeholder="0 - 7"
+                                class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                            {% if errors.get('aktivitas') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['aktivitas'] }}</p>
+                            {% endif %}
+                            {% if errors.get('aktv') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['aktv'] }}</p>
+                            {% endif %}
+                            {% if errors.get('aktv') is none and errors.get('aktv') %}
+                            <p class="mt-2 text-xs text-rose-400">{{ errors['aktv'] }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 mt-2">
+                            <button type="submit" class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 text-gray-900 font-bold transition-transform hover:scale-105 focus:outline-none shadow-lg shadow-cyan-300/50 overflow-hidden">
+                                <span class="relative z-10">Hitung Kalori</span>
+                                <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                            </button>
+
+                            <a href="/" class="mt-3 sm:mt-0 w-full sm:w-auto inline-block text-center px-5 py-2.5 rounded-lg
+                                            border border-cyan-300/30 shadow-lg text-cyan-300 hover:border-cyan-300 hover:bg-cyan-300/10 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+                                Kembali ke Beranda
+                            </a>
+                        </div>
+
+                        {% if suksess %}
+                            <div class="mt-4 p-4 pt-0 pb-5 rounded-lg bg-emerald-500/20 border border-emerald-400/30 shadow-lg shadow-emerald-400/20 text-emerald-300 whitespace-pre-line max-w-full backdrop-blur-sm">
+                                Hasil : 
+                                {{ suksess }}
+                            </div>
+                        {% endif %}
+
+                    </form>
+
+                    <footer class="mt-6 text-xs text-gray-500">
+                        <p>Catatan: Masukkan angka realistis untuk hasil lebih akurat. Aktivitas = jumlah sesi olahraga/minggu.</p>
+                    </footer>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
