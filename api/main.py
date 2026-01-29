@@ -10,7 +10,7 @@ import re
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")
+app.secret_key = os.getenv("SECRET_KEY", "dev-secret-please-change")
 
 AI_KEY = os.getenv("GROQ_API_KEY")
 
@@ -94,11 +94,11 @@ def cekKalori():
             except ValueError:
                 errors['aktv'] = "Inputan aktivitas harus berupa angka bulat (0 sampai 7)."
 
-        prompt = f"""Tolong hitungkan kalori untuk {gender},dengan berat badan {bb}kg, tinggi {tb}cm, dan aktivitas olahraga/gym {aktv}x/minggu. 
+        prompt = f"""Tolong hitungkan kalori untuk {gender},dengan berat badan {beratBadan}kg, tinggi {tinggiBadan}cm, dan aktivitas olahraga/gym {aktivitas}x/minggu. 
                     Gunakan Mifflin-St Jeor:
                     BMR pria = 10×bb + 6.25×tb − 5×age + 5;
                     BMR wanita = 10×bb + 6.25×tb − 5×age − 161.
-                    Jika age tidak diberikan, pakai age=25. Tentukan faktor aktivitas (AF) dari {aktv}: 0→1.2; 1–2→1.375; 3–4→1.55; 5–6→1.725; 7→1.9.
+                    Jika age tidak diberikan, pakai age=25. Tentukan faktor aktivitas (AF) dari {aktivitas}: 0→1.2; 1–2→1.375; 3–4→1.55; 5–6→1.725; 7→1.9.
                     Kalori Maintenance = round(BMR × AF).
                     Kalori Surplus (Bulking) = round(Maintenance × 1.15).
                     Kalori Defisit (Cutting) = round(Maintenance × 0.85).

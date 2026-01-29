@@ -5,9 +5,9 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18"
   },
-  "name": "gymcels---ai",
+  "name": "gymcels-ai",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gymcels AI - Advanced Fitness Intelligence",
   "main": "index.js",
   "dependencies": {
     "detect-libc": "^2.1.2",
@@ -27,11 +27,11 @@
     "tapable": "^2.3.0"
   },
   "scripts": {
-    "dev": "npx tailwindcss -i ./static/src/input.css -o ./static/dist/output.css --watch",
-    "build": "npx tailwindcss -i ./static/src/input.css -o ./static/dist/output.css --minify",
+    "dev": "npx tailwindcss -i ./api/static/src/input.css -o ./api/static/dist/output.css --watch",
+    "build": "npx tailwindcss -i ./api/static/src/input.css -o ./api/static/dist/output.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["tailwind", "fitness", "ai", "gym", "cels", "gymcels", "gymcels-ai"],
   "author": "",
   "license": "ISC",
   "type": "commonjs"

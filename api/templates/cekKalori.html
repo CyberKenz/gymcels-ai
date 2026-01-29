@@ -18,6 +18,20 @@
     </style>
 </head>
 <body class="bg-black min-h-screen overflow-hidden relative">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-grid-pattern bg-grid-size pointer-events-none"></div>
+    <div class="fixed inset-0 bg-noise pointer-events-none"></div>
+    
+    <!-- Animated Gradient Orbs -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-linear-to-br from-cyan-500/20 to-transparent rounded-full blur-3xl animate-float pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-linear-to-tl from-rose-500/20 to-transparent rounded-full blur-3xl animate-float-delayed pointer-events-none"></div>
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-linear-to-br from-indigo-500/20 via-purple-500/20 to-rose-500/20 rounded-full blur-3xl animate-float-mid pointer-events-none"></div>
+    
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="animate-scanLine absolute left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent top-0"></div>
+    </div>
+
     <div class="fixed inset-0 opacity-5 pointer-events-none">
         <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px);"></div>
     </div>
@@ -45,7 +59,7 @@
                             <label for="gender" class="block text-sm font-medium text-cyan-300 mb-2">Gender</label>
                             <select id="gender" name="gender" required
                                     class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
-                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm">
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 focus:shadow-lg focus:shadow-cyan-300/30 active:shadow-lg active:shadow-cyan-300/30 backdrop-blur-sm transition-all duration-300">
                                 <option value="" disabled selected>Pilih gender</option>
                                 <option value="pria">Laki-laki</option>
                                 <option value="wanita">Perempuan</option>
@@ -60,7 +74,7 @@
                             <label for="bb" class="block text-sm font-medium text-cyan-300 mb-2">Berat Badan (kg)</label>
                             <input id="bb" name="bb" type="number" step="0.1" min="10" max="300" placeholder="Contoh: 68"
                                 class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
-                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 focus:shadow-lg focus:shadow-cyan-300/30 active:shadow-lg active:shadow-cyan-300/30 backdrop-blur-sm transition-all duration-300" />
                             {% if errors.get('bb') %}
                             <p class="mt-2 text-xs text-rose-400">{{ errors['bb'] }}</p>
                             {% endif %}
@@ -71,7 +85,7 @@
                             <label for="tb" class="block text-sm font-medium text-cyan-300 mb-2">Tinggi Badan (cm)</label>
                             <input id="tb" name="tb" type="number" step="1" min="50" max="260" placeholder="Contoh: 175"
                                 class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
-                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 focus:shadow-lg focus:shadow-cyan-300/30 active:shadow-lg active:shadow-cyan-300/30 backdrop-blur-sm transition-all duration-300" />
                             {% if errors.get('tb') %}
                             <p class="mt-2 text-xs text-rose-400">{{ errors['tb'] }}</p>
                             {% endif %}
@@ -82,7 +96,7 @@
                             <label for="aktivitas" class="block text-sm font-medium text-cyan-300 mb-2">Tingkat Aktivitas (kali/minggu)</label>
                             <input id="aktivitas" name="aktivitas" type="number" min="0" max="7" step="1" placeholder="0 - 7"
                                 class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-3 py-2 shadow-sm placeholder-gray-500
-                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm" />
+                                        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 focus:shadow-lg focus:shadow-cyan-300/30 active:shadow-lg active:shadow-cyan-300/30 backdrop-blur-sm transition-all duration-300" />
                             {% if errors.get('aktivitas') %}
                             <p class="mt-2 text-xs text-rose-400">{{ errors['aktivitas'] }}</p>
                             {% endif %}
@@ -95,13 +109,13 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 mt-2">
-                            <button type="submit" class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 text-gray-900 font-bold transition-transform hover:scale-105 focus:outline-none shadow-lg shadow-cyan-300/50 overflow-hidden">
+                            <button type="submit" class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 text-gray-900 font-bold transition-all duration-300 hover:scale-105 active:scale-105 focus:scale-105 focus:outline-none shadow-lg shadow-cyan-300/50 hover:shadow-cyan-300/70 active:shadow-cyan-300/70 focus:shadow-cyan-300/70 overflow-hidden">
                                 <span class="relative z-10">Hitung Kalori</span>
                                 <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
                             </button>
 
                             <a href="/" class="mt-3 sm:mt-0 w-full sm:w-auto inline-block text-center px-5 py-2.5 rounded-lg
-                                            border border-cyan-300/30 shadow-lg text-cyan-300 hover:border-cyan-300 hover:bg-cyan-300/10 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+                                            border border-cyan-300/30 shadow-lg text-cyan-300 hover:border-cyan-300 hover:bg-cyan-300/10 hover:scale-105 active:border-cyan-300 active:bg-cyan-300/10 active:scale-105 focus:border-cyan-300 focus:bg-cyan-300/10 focus:scale-105 hover:shadow-cyan-300/40 active:shadow-cyan-300/40 focus:shadow-cyan-300/40 transition-all duration-300 backdrop-blur-sm focus:outline-none">
                                 Kembali ke Beranda
                             </a>
                         </div>

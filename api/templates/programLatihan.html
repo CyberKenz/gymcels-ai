@@ -18,6 +18,20 @@
     </style>
 </head>
 <body class="bg-black min-h-screen overflow-hidden relative">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-grid-pattern bg-grid-size pointer-events-none"></div>
+    <div class="fixed inset-0 bg-noise pointer-events-none"></div>
+    
+    <!-- Animated Gradient Orbs -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-linear-to-br from-cyan-500/20 to-transparent rounded-full blur-3xl animate-float pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-linear-to-tl from-rose-500/20 to-transparent rounded-full blur-3xl animate-float-delayed pointer-events-none"></div>
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-linear-to-br from-indigo-500/20 via-purple-500/20 to-rose-500/20 rounded-full blur-3xl animate-float-mid pointer-events-none"></div>
+    
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="animate-scanLine absolute left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent top-0"></div>
+    </div>
+
     <div class="fixed inset-0 opacity-5 pointer-events-none">
         <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px);"></div>
     </div>
@@ -53,6 +67,11 @@
                                 class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-4 py-3 shadow-sm placeholder-gray-500
                                     focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm transition-all duration-300" 
                             />
+
+                            {% if errors.get('maxHariLatihan') %}
+                                <p class="mt-2 text-xs text-rose-400">{{ errors['maxHariLatihan'] }}</p>
+                            {% endif %}
+
                             <p class="mt-2 text-xs text-gray-500">Masukkan jumlah 1-7 hari per minggu</p>
                         </div>
 
@@ -70,7 +89,13 @@
                                 class="block w-full rounded-lg border border-cyan-300/30 bg-gray-800/50 text-gray-200 px-4 py-3 shadow-sm placeholder-gray-500
                                     focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300 backdrop-blur-sm transition-all duration-300" 
                             />
+
+                            {% if errors.get('lamaLatihan') %}
+                                <p class="mt-2 text-xs text-rose-400">{{ errors['lamaLatihan'] }}</p>
+                            {% endif %}
+
                             <p class="mt-2 text-xs text-gray-500">Bisa menggunakan desimal, contoh: 0.5 (6 bulan), 2.5 (2 tahun 6 bulan)</p>
+
                         </div>
 
                         <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 mt-2">

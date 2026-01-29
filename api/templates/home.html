@@ -3,101 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Gymcels AI - Advanced Fitness Intelligence</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
-    
-    <title>Gymcels AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-black min-h-screen flex justify-center overflow-x-hidden relative">
-    <header class="fixed top-0 left-0 w-full h-14 md:h-16 flex items-center z-50 backdrop-blur-sm bg-black/40 border-b border-cyan-300">
+<body class="bg-black text-white overflow-x-hidden relative font-rajdhani">
+    
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-grid-pattern bg-grid-size pointer-events-none"></div>
+    <div class="fixed inset-0 bg-noise pointer-events-none"></div>
+    
+    <!-- Animated Gradient Orbs -->
+    <div class="fixed top-20 left-10 w-96 h-96 bg-linear-to-br from-cyan-500/20 to-transparent rounded-full blur-3xl animate-float pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-linear-to-tl from-rose-500/20 to-transparent rounded-full blur-3xl animate-float-delayed pointer-events-none"></div>
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-linear-to-br from-indigo-500/20 via-purple-500/20 to-rose-500/20 rounded-full blur-3xl animate-float-mid pointer-events-none"></div>
+    
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="animate-scanLine absolute left-0 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent top-0"></div>
+    </div>
+    
+    <!-- Header -->
+    <header role="banner" class="fixed top-0 left-0 w-full h-14 md:h-16 flex items-center z-50 backdrop-blur-sm bg-black/40 border-b border-cyan-500/30">
         <div class="max-w-6xl w-full mx-auto px-4 flex items-center">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-linear-to-br from-rose-500 via-indigo-500 to-cyan-300 flex items-center justify-center shadow-sm shadow-cyan-300/30">
-                    <svg class="w-4 h-4 text-gray-900" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div class="w-8 h-8 rounded-lg bg-linear-to-br from-rose-500 via-indigo-500 to-cyan-300 flex items-center justify-center shadow-sm shadow-cyan-300/30" aria-hidden="true">
+                    <svg class="w-4 h-4 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
                     </svg>
                 </div>
-                <span class="text-white stalinist-one-regular font-extrabold tracking-wider text-xl md:text-base">Gymcels<span class="text-cyan-300">AI</span></span>
+                <span class="text-white font-orbitron font-extrabold tracking-wider text-xl md:text-base">
+                    Gymcels<span class="text-cyan-400">AI</span>
+                </span>
             </div>
-            <div class="flex-1"></div>
-            <nav class="hidden md:flex items-center gap-4 text-sm text-gray-300"></nav>
         </div>
     </header>
 
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(103, 232, 249, 0.5) 39px, rgba(103, 232, 249, 0.5) 40px);"></div>
-    </div>
-
-    <div class="relative z-10 text-center px-4 max-w-6xl mx-auto pt-32 md:pt-24 space-y-6 md:space-y-10">
-        <div class="mb-8 inline-block mt-6">
-            <div class="w-28 h-28 mx-auto bg-linear-to-br from-rose-500 via-indigo-500 to-cyan-300 rounded-3xl flex items-center justify-center shadow-lg shadow-cyan-300/50">
-                <svg class="w-14 h-14 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
-                </svg>
-            </div>
-        </div>
-        
-        <h1 class="text-6xl md:text-8xl font-black text-cyan-300 mb-3 tracking-wider drop-shadow-[0_0_25px_rgba(103,232,249,0.7)] mt-6 md:mt-10">
-            GYMCELS AI
-        </h1>
-
-        <div class="h-0.5 w-24 bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 mx-auto mb-6"></div>
-        
-        <p class="text-gray-400 text-lg md:text-xl mb-12 font-light tracking-widest">
-            Advanced Fitness Intelligence System
-        </p>
-        
-        <div class="mb-16">
-            <a href="/cekKalori">
-                <button class="group relative bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 hover:from-rose-600 hover:via-indigo-600 hover:to-cyan-400 text-gray-900 font-bold py-5 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-300/50 hover:shadow-cyan-300/70 text-lg overflow-hidden">
-                    <span class="relative z-10 flex items-center gap-3 justify-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+    <main role="main" class="relative z-10 min-h-screen flex items-center justify-center px-4 pt-20 pb-12">
+        <div class="max-w-5xl w-full text-center space-y-10 md:space-y-12">
+            
+            <div class="animate-fadeInUp flex justify-center mb-8">
+                <div class="relative">
+                    <div class="absolute inset-0 animate-rotateBorder" aria-hidden="true">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-gradient-conic p-0.5">
+                            <div class="w-full h-full bg-black rounded-2xl"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-linear-to-br from-rose-500 via-indigo-500 to-cyan-300 flex items-center justify-center animate-pulseGlow">
+                        <svg class="w-12 h-12 md:w-16 md:h-16 text-gray-900" fill="currentColor" viewBox="0 0 24 24" aria-label="Gymcels AI Logo">
+                            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
                         </svg>
-                        MENGHITUNG KALORI
-                    </span>
-                    <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                </button>
-            </a>
-        </div>
-
-        <div class="mb-16">
-            <a href="/programLatihan">
-                <button class="group relative bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 hover:from-rose-600 hover:via-indigo-600 hover:to-cyan-400 text-gray-900 font-bold py-5 px-12 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-300/50 hover:shadow-cyan-300/70 text-lg overflow-hidden">
-                    <span class="relative z-10 flex items-center gap-3 justify-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                        MEMBUAT PROGRAM GYM
-                    </span>
-                    <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                </button>
-            </a>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12 md:mt-16 mb-12 md:mb-16">
-            <div class="group bg-gray-900/60 backdrop-blur-md border border-cyan-300/30 rounded-2xl p-8 hover:border-cyan-300 hover:bg-gray-900/80 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-300/30">
-                <div class="text-cyan-300 text-[2.75rem] font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <span class="material-symbols-outlined">metabolism</span>
+                    </div>
                 </div>
-                <div class="h-0.5 w-12 bg-linear-to-r from-rose-500 to-indigo-500 mx-auto mb-3"></div>
-                <div class="text-gray-400 text-sm font-light">Counting Calories</div>
             </div>
             
-            <div class="group bg-gray-900/60 backdrop-blur-md border border-rose-500/30 rounded-2xl p-8 hover:border-rose-500 hover:bg-gray-900/80 transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/30">
-                <div class="text-rose-500 font-bold text-[2.75rem] mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <span class="material-symbols-outlined">exercise</span>
-                </div>
-                <div class="h-0.5 w-12 bg-linear-to-r from-indigo-500 to-cyan-300 mx-auto mb-3"></div>
-                <div class="text-gray-400 text-sm font-light">Create an Exercise Program</div>
+            <div class="space-y-2 animate-fadeInUp animation-delay-200">
+                <h1 class="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl animate-glitch mb-3 tracking-wider">
+                    <span class="bg-linear-to-r from-cyan-400 via-indigo-500 to-rose-500 bg-clip-text text-transparent">
+                        GYMCELS AI
+                    </span>
+                </h1>
+                
+                <div class="w-32 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent mx-auto" aria-hidden="true"></div>
             </div>
             
-            <div class="group bg-gray-900/60 backdrop-blur-md border border-indigo-500/30 rounded-2xl p-8 hover:border-indigo-500 hover:bg-gray-900/80 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30">
-                <div class="text-indigo-500 text-4xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">∞</div>
-                <div class="h-0.5 w-12 bg-linear-to-r from-cyan-300 to-rose-500 mx-auto mb-3"></div>
-                <div class="text-gray-400 text-sm font-light">Unlimited Power</div>
+            <p class="text-xl md:text-2xl text-gray-400 tracking-widest animate-fadeInUp animation-delay-400">
+                Advanced Fitness Intelligence System
+            </p>
+            
+            <div class="space-y-6 animate-fadeInUp animation-delay-600 max-w-xl mx-auto">
+
+                <!-- Button 1: Calorie Calculator -->
+                <a href="/cekKalori" class="block">
+                    <button class="group relative w-full bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 hover:from-rose-600 hover:via-indigo-600 hover:to-cyan-400 active:from-rose-600 active:via-indigo-600 active:to-cyan-400 focus:from-rose-600 focus:via-indigo-600 focus:to-cyan-400 text-black font-bold py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-105 focus:scale-105 shadow-lg shadow-cyan-300/50 hover:shadow-cyan-300/70 active:shadow-cyan-300/70 focus:shadow-cyan-300/70 overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-black font-orbitron" aria-label="Menghitung Kalori">
+                        <span class="relative z-10 flex items-center gap-3 justify-center">
+                            <span class="material-symbols-outlined text-2xl" aria-hidden="true">calculate</span>
+                            MENGHITUNG KALORI
+                        </span>
+                        <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true"></span>
+                    </button>
+                </a>
+
+                <!-- Button 2: Workout Program -->
+                <a href="/programLatihan" class="block">
+                    <button class="group relative w-full bg-linear-to-r from-rose-500 via-indigo-500 to-cyan-300 hover:from-rose-600 hover:via-indigo-600 hover:to-cyan-400 active:from-rose-600 active:via-indigo-600 active:to-cyan-400 focus:from-rose-600 focus:via-indigo-600 focus:to-cyan-400 text-black font-bold py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-105 focus:scale-105 shadow-lg shadow-cyan-300/50 hover:shadow-cyan-300/70 active:shadow-cyan-300/70 focus:shadow-cyan-300/70 overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-black font-orbitron" aria-label="Membuat Program Gym">
+                        <span class="relative z-10 flex items-center gap-3 justify-center">
+                            <span class="material-symbols-outlined text-2xl" aria-hidden="true">fitness_center</span>
+                            MEMBUAT PROGRAM GYM
+                        </span>
+                        <span class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true"></span>
+                    </button>
+                </a>
+
+                <button class="group relative w-full bg-linear-to-r from-rose-500/50 via-indigo-500/50 to-cyan-300/50 hover:from-rose-500/70 hover:via-indigo-500/70 hover:to-cyan-300/70 active:from-rose-500/70 active:via-indigo-500/70 active:to-cyan-300/70 focus:from-rose-500/70 focus:via-indigo-500/70 focus:to-cyan-300/70 text-gray-300 font-bold py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-105 focus:scale-105 shadow-lg shadow-cyan-300/30 hover:shadow-cyan-300/50 active:shadow-cyan-300/50 focus:shadow-cyan-300/50 overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:ring-offset-2 focus:ring-offset-black font-orbitron cursor-not-allowed" aria-label="Calories Tracking - Coming Soon" disabled>
+                    <span class="relative z-10 flex items-center gap-3 justify-center">
+                        <span class="material-symbols-outlined text-2xl" aria-hidden="true">upcoming</span>
+                        CALORIES TRACKING (COMING SOON)
+                    </span>
+                </button>
             </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fadeInUp animation-delay-800">
+                
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-linear-to-br from-cyan-500/20 to-transparent rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500" aria-hidden="true"></div>
+                    <div class="relative bg-gray-900/50 backdrop-blur-md border border-cyan-500/30 rounded-xl p-8 hover:border-cyan-500/60 hover:bg-gray-900/70 transition-all duration-300 hover:scale-105 focus-within:scale-105 focus-within:border-cyan-500/60 focus-within:bg-gray-900/70">
+                        <div class="text-cyan-400 text-5xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <span class="material-symbols-outlined text-[3rem]">metabolism</span>
+                        </div>
+                        <div class="h-0.5 w-12 bg-linear-to-r from-rose-500 to-indigo-500 mx-auto mb-3" aria-hidden="true"></div>
+                        <div class="text-gray-400 text-sm tracking-wider uppercase">Counting Calories</div>
+                    </div>
+                </div>
+                
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-linear-to-br from-indigo-500/20 via-purple-500/20 to-rose-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500" aria-hidden="true"></div>
+                    <div class="relative bg-gray-900/50 backdrop-blur-md border border-rose-500/30 rounded-xl p-8 hover:border-rose-500/60 hover:bg-gray-900/70 transition-all duration-300 hover:scale-105 focus-within:scale-105 focus-within:border-rose-500/60 focus-within:bg-gray-900/70">
+                        <div class="text-rose-500 text-5xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <span class="material-symbols-outlined text-[3rem]">exercise</span>
+                        </div>
+                        <div class="h-0.5 w-12 bg-linear-to-r from-indigo-500 to-cyan-300 mx-auto mb-3" aria-hidden="true"></div>
+                        <div class="text-gray-400 text-sm tracking-wider uppercase">Create Exercise Program</div>
+                    </div>
+                </div>
+                
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-linear-to-br from-indigo-500/20 to-transparent rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500" aria-hidden="true"></div>
+                    <div class="relative bg-gray-900/50 backdrop-blur-md border border-indigo-500/30 rounded-xl p-8 hover:border-indigo-500/60 hover:bg-gray-900/70 transition-all duration-300 hover:scale-105 focus-within:scale-105 focus-within:border-indigo-500/60 focus-within:bg-gray-900/70">
+                        <div class="text-indigo-400 text-5xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <span class="material-symbols-outlined text-[3rem]">eye_tracking</span>
+                        </div>
+                        <div class="h-0.5 w-12 bg-linear-to-r from-cyan-300 to-rose-500 mx-auto mb-3" aria-hidden="true"></div>
+                        <div class="text-gray-400 text-sm tracking-wider uppercase">Calories Tracking</div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <footer class="animate-fadeInUp animation-delay-1000 pt-8 border-t border-gray-800/50">
+                <p class="text-gray-600 text-xs md:text-sm">
+                    © 2026 Gymcels AI. All rights reserved. Building the future of fitness, one rep at a time.
+                </p>
+            </footer>
+            
         </div>
-    </div>
+    </main>
+    
 </body>
 </html>
