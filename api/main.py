@@ -5,7 +5,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, get
 from dotenv import load_dotenv
 from groq import Groq
 from datetime import datetime
-import re
 
 load_dotenv()
 
